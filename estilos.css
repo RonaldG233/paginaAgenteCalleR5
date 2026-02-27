@@ -1,0 +1,734 @@
+.ventana {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100%;
+  background-color: var(--color-beige); /* antes #F5F5DC */
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* ==============================
+   TARJETA DE REGISTRO
+============================== */
+.ventana_registro {
+  background-color: var(--color-blanco); /* antes #fff */
+  width: 100%;
+  max-width: 520px;
+  border-radius: 20px;
+  box-shadow: 0 6px 25px rgba(82, 82, 82, 0.25);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  animation: aparecer 0.4s ease-in-out;
+}
+
+@keyframes aparecer {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ==============================
+   LOGO / TÍTULO
+============================== */
+.titulo_registro {
+  padding: 10px 0 10px 0;
+  display: flex;
+  justify-content: center;
+  background: var(--color-blanco);
+}
+
+.texto_titulo {
+  width: 200px;
+  max-width: 40%;
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
+}
+
+.texto_titulo:hover {
+  transform: scale(1.15);
+}
+
+/* ==============================
+   FORMULARIO
+============================== */
+.campos_registro {
+  width: 100%;
+  background-color: var(--color-marron); /* antes #8B5E3C */
+  padding: 35px 25px 15px 25px;
+  border-radius: 0 0 20px 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.formulario1 {
+  width: 100%;
+  max-width: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* ==============================
+   CAMPOS DE ENTRADA
+============================== */
+.grupo_campo {
+  width: 100%;
+}
+
+.input,
+.select_content {
+  width: 100%;
+  background-color: var(--color-blanco); /* antes #fff */
+  padding: 12px 30px;
+  border-radius: 12px;
+  border: 1px solid var(--color-gris-borde); /* antes #ccc */
+  outline: none;
+  font-size: 15px;
+  transition: all 0.3s ease;
+}
+
+.input:focus,
+.select_content:focus {
+  border-color: var(--color-marron); /* antes #8B5E3C */
+  box-shadow: 0 0 6px rgba(139, 94, 60, 0.6);
+}
+
+/* Error */
+.border--red {
+  border: 2px solid var(--color-rojo) !important; /* antes red */
+  background-color: var(--color-rojo-fondo); /* antes #ffe6e6 */
+  color: var(--color-rojo);
+}
+
+/* Mensaje de error */
+span {
+  display: block;
+  font-size: 0.85rem;
+  margin-top: 5px;
+  text-align: left;
+  color: var(--color-blanco);
+  font-style: italic;
+}
+
+/* ==============================
+   BOTÓN Y ENLACES
+============================== */
+.contenedor_boton {
+  width: 100%;
+  padding: 25px 0;
+  border-radius: 0 0 20px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.boton_registrarse {
+  background-color: var(--color-beige); /* antes #F5F5DC */
+  color: var(--color-marron); /* antes #8B5E3C */
+  padding: 14px 50px;
+  border-radius: 12px;
+  border: none;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.boton_registrarse:hover {
+  background-color: var(--color-marron-oscuro); /* antes #5c3c26 */
+  transform: translateY(-3px);
+}
+
+.cambio-pagina {
+  color: var(--color-beige); /* antes #F5F5DC */
+  font-size: 14px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.cambio-pagina:hover {
+  text-decoration: underline;
+}
+
+/* ==============================
+   RESPONSIVE
+============================== */
+@media (max-width: 480px) {
+  .ventana_registro {
+    max-width: 95%;
+  }
+  .boton_registrarse {
+    width: 90%;
+  }
+}
+
+
+/*PGINA PRINCIPAL*/
+/* Reseteo básico para limpiar márgenes del navegador */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.pagina-principal {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fcfcfc; /* Fondo neutro para resaltar el rojo */
+}
+
+/* TÍTULO Y LOGO */
+.titulo-pagina_principal {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+    margin-top: 40px; /* Un poco más de aire arriba */
+    margin-bottom: 60px;
+    gap: 15px;
+}
+
+.texto_titulooo {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 45px; /* Un poco más grande para imponer presencia */
+    color: #333;
+    letter-spacing: 2px;
+}
+
+.titulo_imagen img {
+    max-width: 180px; /* Ajusta según el tamaño de tu logo */
+    height: auto;
+}
+
+/* CONTENEDOR DE CUADROS */
+.contenidooo {
+    display: flex;
+    flex-wrap: wrap; /* Para que si hay muchos, bajen a la siguiente línea */
+    flex-direction: row;
+    width: 90%;
+    max-width: 1000px;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px; /* Espacio uniforme entre cuadros */
+}
+
+/* Estilo de los links para que no parezcan links */
+.contenidooo a {
+    text-decoration: none; 
+    color: inherit;
+}
+
+/* Contenedor principal del item */
+.contenedor-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.3s ease;
+}
+
+.cuadros {
+    width: 200px;
+    height: 200px;
+    background-color: #E43636;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    color: #E2DDB4;
+    position: relative; /* Necesario para posicionar la imagen dentro */
+    overflow: hidden;   /* Esconde la imagen cuando no hay hover */
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Estilo de la imagen escondida */
+.imagen-hover {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transform: scale(1.2); /* Empieza un poco más grande */
+    transition: all 0.4s ease;
+}
+
+/* El número o texto central original */
+.numero-centro {
+    transition: opacity 0.3s ease;
+}
+
+/* El nombre que aparece debajo */
+.nombre-debajo {
+    margin-top: 10px;
+    font-family: sans-serif;
+    font-weight: bold;
+    color: #333;
+    opacity: 0; /* Escondido al principio */
+    transform: translateY(-10px); /* Un poco arriba */
+    transition: all 0.4s ease;
+}
+
+/* --- EFECTO HOVER --- */
+
+/* 1. Elevamos todo el conjunto */
+.enlace-cuadro:hover .contenedor-item {
+    transform: translateY(-10px);
+}
+
+/* 2. Mostramos la imagen y quitamos el fondo rojo */
+.enlace-cuadro:hover .cuadros {
+    background-color: #000; /* Fondo oscuro por si la imagen carga lento */
+}
+
+.enlace-cuadro:hover .imagen-hover {
+    opacity: 1;
+    transform: scale(1); /* La imagen se ajusta al cuadro */
+}
+
+/* 3. Escondemos el número central */
+.enlace-cuadro:hover .numero-centro {
+    opacity: 0;
+}
+
+/* 4. Desplazamos y mostramos el nombre debajo */
+.enlace-cuadro:hover .nombre-debajo {
+    opacity: 1;
+    transform: translateY(5px); /* Baja a su posición final */
+}
+
+/* Responsive: Para celulares */
+@media (max-width: 600px) {
+    .contenidooo {
+        flex-direction: column;
+        gap: 20px;
+    }
+    .texto_titulooo {
+        font-size: 30px;
+    }
+}
+
+/*PAGINA VENTAAS*/
+/* Reset básico para que todo se vea limpio */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #fcfcfc; /* Un fondo neutro para que resalte tu paleta */
+    padding: 20px;
+}
+
+/* Header */
+.content_primer_pagina {
+    display: flex;
+    width: 100%;
+    height: 60px;
+    margin-bottom: 20px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.titulo_primer_pagina {
+    width: 40%;
+    background-color: #E43636;
+    color: #E2DDB4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 28px;
+    font-weight: bold;
+    border-radius: 0 30px 30px 0;
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
+}
+.titulo_logo{
+  display: flex;
+  justify-content: center;
+}
+.titulo_sayayin{
+  width: 15%;
+}
+.nombreZonaDistrito {
+    background-color: #E2DDB4;
+    width: 35%;
+    border-radius: 15px;
+    display: flex;
+    overflow: hidden; /* Para que el border-radius afecte a los hijos */
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
+}
+
+.nombreZona {
+    width: 50%;
+    background-color: #F6EFD2;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+}
+
+.nombreDistrito {
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* Sección de Filtros y Cuadros Principales */
+.filtroDistribu {
+    width: 100%;
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.filtro_primer_pagina {
+    display: flex;
+    background-color: #E2DDB4;
+    width: 300px;
+    padding: 20px;
+    flex-direction: column;
+    gap: 15px;
+    justify-content: center;
+    border-radius: 15px;
+}
+
+.filtro_zonaYdistrito {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.filtro_zonaYdistrito p {
+    font-weight: bold;
+    font-size: 12px;
+    justify-content: flex-start;
+}
+
+.select_filtro {
+    background-color: #E43636;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 12px;
+    color: #E2DDB4;
+    cursor: pointer;
+    width: 100%;
+}
+
+/* Contenedor Derecha (Dashboard) */
+.distriRed {
+    background-color: #E2DDB4;
+    flex-grow: 1;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.titulo_distriRed {
+    width: fit-content;
+    margin: 0 auto;
+    background-color: black;
+    color: #E2DDB4;
+    padding: 8px 40px;
+    border-radius: 0 0 15px 15px;
+    text-transform: uppercase;
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+
+.info_distriRed {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    padding: 15px;
+}
+
+.infoGrande_distriRed, .infoPeque_distriRed {
+    background-color: #E43636;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    min-width: 80px;
+    text-align: center;
+}
+
+.infoGrande_distriRed h3, .infoPeque_distriRed h3 { font-size: 0.7rem; color: #F6EFD2; }
+.infoGrande_distriRed h1, .infoPeque_distriRed h1 { font-size: 1.5rem; }
+
+/* Sección de Círculos/Gráficos */
+.porc_distriRed {
+    display: flex;
+    background-color: #F6EFD2;
+    margin-top: auto;
+    height: 120px;
+    border-top: 2px solid #E2DDB4;
+}
+
+.primer_porc_distriRed, .segund_porc_distriRed {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.circ1 {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: #E43636;
+    border: 5px solid #E2DDB4;
+}
+
+/* Sección Inferior */
+.fichayMarketShare {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+.fichaDistritoZona {
+    background-color: #E43636;
+    width: 300px;
+    border-radius: 15px;
+    overflow: hidden;
+    color: white;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.titulo__fichaDistritoZona {
+    padding: 15px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.datosFicha {
+    display: flex;
+    border-bottom: 1px solid #eee;
+}
+
+/* Efecto cebra para la tabla */
+.datosFicha:nth-child(even) .nombre_datosFicha { background-color: #F6EFD2; color: black; }
+.datosFicha:nth-child(odd) .nombre_datosFicha { background-color: #fff; color: black; }
+
+.nombre_datosFicha {
+    width: 70%;
+    padding: 8px 15px;
+    font-size: 13px;
+}
+
+.numero_datosFicha {
+    background-color: #E2DDB4;
+    width: 30%;
+    padding: 8px;
+    color: black;
+    text-align: center;
+    font-weight: bold;
+}
+
+.tabla_marketShare {
+    flex-grow: 1;
+    background-color: #E2DDB4;
+    border-radius: 15px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.titulo_tabla_marketShare {
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.marketShare {
+    width: 100%;
+    background-color: #F6EFD2;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+
+/* ... (Todo tu CSS anterior se mantiene igual hasta los selectores específicos) ... */
+
+/* --- NUEVAS ANIMACIONES DE ENTRADA --- */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Aplicamos la animación a los contenedores principales */
+.filtro_primer_pagina, .distriRed, .fichaDistritoZona, .tabla_marketShare {
+    animation: fadeInUp 0.6s ease-out forwards;
+}
+
+/* --- HOVERS PARA INTERACTIVIDAD --- */
+
+/* 1. Título principal: un pequeño brillo al pasar el mouse */
+.titulo_primer_pagina {
+    transition: all 0.3s ease;
+    cursor: default;
+}
+.titulo_primer_pagina:hover {
+    filter: brightness(1.1);
+    padding-left: 20px; /* Se desplaza sutilmente a la derecha */
+}
+
+/* 2. Selectores: cambian a un rojo más intenso */
+.select_filtro {
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+.select_filtro:hover {
+    background-color: #c32b2b; /* Rojo un poco más oscuro */
+    transform: scale(1.02);
+}
+
+/* 3. Tarjetas de Información (infoGrande y infoPeque): Efecto de elevación */
+.infoGrande_distriRed, .infoPeque_distriRed {
+    transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+    cursor: pointer;
+}
+.infoGrande_distriRed:hover, .infoPeque_distriRed:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(228, 54, 54, 0.3);
+    background-color: #f24545; /* Rojo más vivo */
+}
+
+/* 4. Círculos de porcentaje: Efecto de pulso sutil */
+.circ1 {
+    transition: all 0.4s ease;
+}
+.circ1:hover {
+    transform: scale(1.1);
+    border-color: #F6EFD2;
+    box-shadow: 0 0 15px rgba(228, 54, 54, 0.5);
+}
+
+/* 5. Filas de la Ficha: Resaltado al pasar el mouse */
+.datosFicha {
+    transition: background-color 0.2s ease;
+    cursor: pointer;
+}
+.datosFicha:hover .nombre_datosFicha {
+    background-color: #000 !important; /* Fondo negro al hover */
+    color: #E2DDB4 !important;        /* Texto crema */
+}
+.datosFicha:hover .numero_datosFicha {
+    background-color: #f24545 !important;
+    color: white !important;
+}
+
+/* 6. Tabla Market Share: se aclara al pasar el mouse */
+.marketShare {
+    transition: all 0.3s ease;
+}
+.marketShare:hover {
+    background-color: #fff;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.05);
+    transform: scale(1.01);
+}
+
+/* 7. Logo: Un giro suave o escala */
+.titulo_sayayin {
+    transition: transform 0.5s ease;
+}
+.titulo_logo:hover .titulo_sayayin {
+    transform: rotate(5deg) scale(1.1);
+}
+
+/* --- AJUSTE DE RESPONSIVE (Opcional pero recomendado) --- */
+@media (max-width: 1000px) {
+    .filtroDistribu, .fichayMarketShare {
+        flex-direction: column;
+        align-items: center;
+    }
+    .filtro_primer_pagina, .distriRed, .fichaDistritoZona, .tabla_marketShare {
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+    }
+    .titulo_primer_pagina {
+        width: 60%;
+    }
+}
+
+/*CAMBIO PARA EL PAG
+DE FILTRO DISTRITO*/
+
+/* --- ORGANIZACIÓN DE LAYOUT --- */
+
+.main_container {
+    display: flex;
+    gap: 20px;
+    width: 100%;
+}
+
+.sidebar_filtros {
+    width: 300px; /* Ancho fijo para el filtro */
+}
+
+.dashboard_content {
+    flex-grow: 1; /* El resto del espacio para la ficha y tendencia */
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Ajuste para que la ficha use mejor el espacio */
+.full-width {
+    width: 100% !important;
+}
+
+.grid_ficha {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Hace que los datos se pongan en columnas si hay espacio */
+    background-color: white;
+}
+
+/* --- TUS ESTILOS PREVIOS MODIFICADOS --- */
+
+.fichaDistritoZona {
+    background-color: #E43636;
+    border-radius: 15px;
+    overflow: hidden;
+    color: white;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.tabla_marketShare {
+    background-color: #E2DDB4;
+    border-radius: 15px;
+    padding: 20px;
+    animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.marketShare {
+    width: 100%;
+    background-color: #F6EFD2;
+    height: 200px; /* Un poco más de altura para la tendencia */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}

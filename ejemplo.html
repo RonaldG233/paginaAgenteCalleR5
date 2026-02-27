@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Prueba Distritos</title>
+</head>
+
+<body>
+
+<h2>Prueba Distritos</h2>
+
+<select id="selectDistrito">
+<option>Cargando...</option>
+</select>
+
+<script>
+
+function mostrarDatos(datos){
+
+console.log("DATOS RECIBIDOS:");
+console.log(datos);
+
+const select =
+document.getElementById("selectDistrito");
+
+select.innerHTML="";
+
+datos.forEach(distrito=>{
+
+const opcion=
+document.createElement("option");
+
+opcion.value=distrito;
+
+opcion.textContent=distrito;
+
+select.appendChild(opcion);
+
+});
+
+}
+
+// Cargar API
+const script=
+document.createElement("script");
+
+script.src="https://script.google.com/macros/s/AKfycbyiv4-da9JVetCKN1bz9lyvg8TJMfXBU1NljBo6ljZS9Q1m8gkgmg5_W9z1lhljZLItCw/exec?callback=mostrarDatos";
+
+document.body.appendChild(script);
+
+</script>
+
+</body>
+</html>
