@@ -1,74 +1,67 @@
-// URL de Google Apps Script
-const urlApi =
-"https://script.googleusercontent.com/macros/echo?user_content_key=AY5xjrS-6Px3dYm6qVw1b1n5-TeVORnNu9UwD0xglPUmhDnRUB6wkDDDXR-VlhkI_x8S-BcVQTH1EwBG4lVxV74AKgoxby53ncXVhqNmtGW86exRL-0hS2fkVVz2siu4woNzc1C8ITK_KNvlyla_AUbpGdH06PH2DeWTaGHqSIFFHIWts5xwKkdbNqduhgZwgjoMw7rzow_AwHaEbgvIwAO07fEZh6Q71Loi-NliqDaOgtioXd1GuDUGLy6p1tgwCqIsYah8LsMWj9jOWEnuQA_6x7ANEBC4MjAFw9GW5nuh&lib=MCIxAao-8S6Z2zmHhGskQNBzzZoSwmMA3";
+const urlApi="https://script.google.com/macros/s/AKfycbyUEk9uVlx4b7oYJEIlKJbcFao1pRkZg_x0LEorv6p_Eh0wqrQVj6dTinAn84RkqUNkhA/exec";
 
 
-async function cargarDistritos() {
+let datosGlobal=[];
 
-try {
+async function cargarZonas(){
+
+try{
 
 const respuesta = await fetch(urlApi);
-
 const datos = await respuesta.json();
 
+datosGlobal = datos;
 
-// Ordenar
-datos.sort((a,b)=>
-a.localeCompare(b,'es',{sensitivity:'base'})
-);
+const select = document.getElementById("selectDistrito");
 
-
-const select =
-document.getElementById("selectDistrito");
-
-
-// Limpiar
 select.innerHTML =
-'<option value="">Seleccione un distrito</option>';
+'<option value="">Seleccione una zona</option>' +
+'<option value="TODOS">TODAS LAS ZONAS</option>';
 
 
-// Agregar opciones
-datos.forEach(distrito=>{
+// obtener zonas únicas
 
-const opcion =
-document.createElement("option");
+const zonas = [...new Set(datos.map(f=>f[0]))];
 
-opcion.value=distrito;
+zonas.sort();
 
-opcion.textContent=distrito;
+zonas.forEach(zona=>{
+
+const opcion=document.createElement("option");
+
+opcion.value=zona;
+opcion.textContent=zona;
 
 select.appendChild(opcion);
 
 });
 
 
-// ✅ EVENTO CUANDO CAMBIA EL SELECT
-
-select.addEventListener("change", function(){
+mostrarTabla(datosGlobal);
 
 
-const distritoSeleccionado =
-select.value;
+// evento filtro
 
+select.addEventListener("change",function(){
 
-// Cambiar nombre arriba
-document.querySelector(".nombreDistrito")
-textContent =
-distritoSeleccionado;
+const zonaSeleccionada = select.value;
 
+if(zonaSeleccionada=="TODOS" || zonaSeleccionada==""){
 
-// Cambiar titulo ficha
-document.querySelector(".titulo__fichaDistritoZona")
-.textContent =
-distritoSeleccionado;
+mostrarTabla(datosGlobal);
+return;
 
+}
+
+const filtrado =
+datosGlobal.filter(f => f[0] == zonaSeleccionada);
+
+mostrarTabla(filtrado);
 
 });
 
-
 }catch(error){
 
-console.log("Error:");
 console.log(error);
 
 }
@@ -76,4 +69,141 @@ console.log(error);
 }
 
 
-window.onload=cargarDistritos;
+
+function mostrarTabla(datos){
+
+const body = document.getElementById("bodyTabla");
+body.innerHTML="";
+
+datos.forEach((fila,index)=>{
+
+// alternar color por grupo
+const claseGrupo = index % 2 === 0 ? "grupoA" : "grupoB";
+
+
+// 🔹 FILA INSTALADAS
+const tr1=document.createElement("tr");
+tr1.classList.add(claseGrupo);
+
+for(let i=0;i<=7;i++){
+
+const td=document.createElement("td");
+
+if(i==5){
+
+let valor = Number(fila[5]);
+
+if(!isNaN(valor)){
+
+let porcentaje = valor*100;
+
+td.textContent = porcentaje.toFixed(1)+"%";
+
+if(porcentaje < 70){
+td.classList.add("cumplimiento_bajo");
+}
+else if(porcentaje < 100){
+td.classList.add("cumplimiento_medio");
+}
+else{
+td.classList.add("cumplimiento_alto");
+}
+
+}else{
+td.textContent = fila[5];
+}
+
+}else{
+
+td.textContent = fila[i];
+
+}
+
+tr1.appendChild(td);
+
+}
+
+body.appendChild(tr1);
+
+
+// 🔹 FILA DIGITADAS
+
+const tr2=document.createElement("tr");
+tr2.classList.add(claseGrupo);
+
+const columnasDigitadas=[8,9,10,11,12,13];
+
+const tdTitulo=document.createElement("td");
+tdTitulo.textContent="DIGITADAS";
+tdTitulo.style.fontWeight="bold";
+tr2.appendChild(tdTitulo);
+
+const tdVacio=document.createElement("td");
+tdVacio.textContent="";
+tr2.appendChild(tdVacio);
+
+columnasDigitadas.forEach((indexCol)=>{
+
+const td=document.createElement("td");
+
+if(indexCol==11){
+
+let valor=Number(fila[indexCol]);
+
+if(!isNaN(valor)){
+
+let porcentaje=valor*100;
+
+td.textContent=porcentaje.toFixed(1)+"%";
+
+if(porcentaje < 70){
+td.classList.add("cumplimiento_bajo");
+}
+else if(porcentaje < 100){
+td.classList.add("cumplimiento_medio");
+}
+else{
+td.classList.add("cumplimiento_alto");
+}
+
+}else{
+td.textContent=fila[indexCol];
+}
+
+}else{
+
+td.textContent=fila[indexCol];
+
+}
+
+tr2.appendChild(td);
+
+});
+
+body.appendChild(tr2);
+
+});
+
+}
+function mostrarFecha(){
+
+const fecha = new Date();
+
+const opciones = {
+weekday: 'long',
+year: 'numeric',
+month: 'long',
+day: 'numeric'
+};
+
+const fechaFormateada = fecha.toLocaleDateString('es-ES', opciones);
+
+document.getElementById("fechaHoy").textContent = fechaFormateada;
+
+}
+window.onload = function(){
+cargarZonas();
+mostrarFecha();
+}
+
+

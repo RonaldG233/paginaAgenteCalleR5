@@ -27,12 +27,17 @@
     --color-gris-borde: #ccc;
   --color-rojo-fondo: #ffe6e6;
   --color-marron-oscuro: #5c3c26;
+
+
+  /*COLOREEEES RECIENTES AGREGADOSSSS*/
+
+  
 }
 
 /* ====== RESETEO GENERAL ====== */
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Playfair Display", "Roboto", serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }

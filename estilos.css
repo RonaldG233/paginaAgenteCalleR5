@@ -315,420 +315,176 @@ span {
 
 /*PAGINA VENTAAS*/
 /* Reset básico para que todo se vea limpio */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+body{
+background:#fcfcfc;
+padding:20px;
+overflow-x:hidden;
+font-family:Arial, Helvetica, sans-serif;
 }
 
-body {
-    background-color: #fcfcfc; /* Un fondo neutro para que resalte tu paleta */
-    padding: 20px;
+/* ================= HEADER ================= */
+
+.content_primer_pagina{
+display:flex;
+align-items:center;
+justify-content:space-between;
+margin-bottom:25px;
+gap: -40px;
 }
 
-/* Header */
-.content_primer_pagina {
-    display: flex;
-    width: 100%;
-    height: 60px;
-    margin-bottom: 20px;
-    justify-content: space-between;
-    align-items: center;
+.titulo_primer_pagina{
+background:#E43636;
+color:#E2DDB4;
+padding:12px 120px;
+font-size:26px;
+font-weight:bold;
+border-radius:0 30px 30px 0;
 }
 
-.titulo_primer_pagina {
-    width: 40%;
-    background-color: #E43636;
-    color: #E2DDB4;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 28px;
-    font-weight: bold;
-    border-radius: 0 30px 30px 0;
-    box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
-}
 .titulo_logo{
-  display: flex;
-  justify-content: center;
+display:flex;
+justify-content:center;
 }
+
 .titulo_sayayin{
-  width: 15%;
-}
-.nombreZonaDistrito {
-    background-color: #E2DDB4;
-    width: 35%;
-    border-radius: 15px;
-    display: flex;
-    overflow: hidden; /* Para que el border-radius afecte a los hijos */
-    box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
+width:80px;
 }
 
-.nombreZona {
-    width: 50%;
-    background-color: #F6EFD2;
-    padding: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: bold;
+.nombreZonaDistrito{
+background:#E2DDB4;
+padding:10px 35px;
+border-radius:12px;
+font-weight:bold;
 }
 
-.nombreDistrito {
-    width: 100%;
-    padding: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    font-weight: bold;
+/* ================= LAYOUT ================= */
+
+.main_container{
+display:flex;
+gap:20px;
+margin-bottom:40px;
 }
 
-/* Sección de Filtros y Cuadros Principales */
-.filtroDistribu {
-    width: 100%;
-    display: flex;
-    gap: 20px;
-    margin-bottom: 20px;
+.sidebar_filtros{
+width:260px;
 }
 
-.filtro_primer_pagina {
-    display: flex;
-    background-color: #E2DDB4;
-    width: 300px;
-    padding: 20px;
-    flex-direction: column;
-    gap: 15px;
-    justify-content: center;
-    border-radius: 15px;
+.dashboard_content{
+flex:1;
+min-width:0;
 }
 
-.filtro_zonaYdistrito {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
+/* ================= FILTROS ================= */
+
+.filtro_primer_pagina{
+background:#E2DDB4;
+padding:20px;
+border-radius:12px;
+display:flex;
+flex-direction:column;
+gap:8px;
 }
 
-.filtro_zonaYdistrito p {
-    font-weight: bold;
-    font-size: 12px;
-    justify-content: flex-start;
+.select_filtro{
+background:#E43636;
+color:#fff;
+border:none;
+padding:8px;
+border-radius:6px;
+cursor:pointer;
 }
 
-.select_filtro {
-    background-color: #E43636;
-    border: none;
-    border-radius: 8px;
-    padding: 8px 12px;
-    color: #E2DDB4;
-    cursor: pointer;
-    width: 100%;
+/* ================= TABLA ================= */
+
+.tablaDistritos{
+background:#E2DDB4;
+padding:20px;
+border-radius:15px;
+overflow-x:auto;
+box-shadow:0 4px 15px rgba(0,0,0,0.08);
 }
 
-/* Contenedor Derecha (Dashboard) */
-.distriRed {
-    background-color: #E2DDB4;
-    flex-grow: 1;
-    border-radius: 15px;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
+#tablaZonas,
+#tablaAgentes{
+width:100%;
+table-layout:fixed;
+border-collapse:collapse;
+background:white;
+border-radius:10px;
+overflow:hidden;
+font-size:12px;
 }
 
-.titulo_distriRed {
-    width: fit-content;
-    margin: 0 auto;
-    background-color: black;
-    color: #E2DDB4;
-    padding: 8px 40px;
-    border-radius: 0 0 15px 15px;
-    text-transform: uppercase;
-    font-size: 14px;
-    letter-spacing: 1px;
+/* HEADER TABLA */
+
+#tablaZonas thead,
+#tablaAgentes thead{
+background:#E43636;
+color:#F6EFD2;
+text-transform:uppercase;
 }
 
-.info_distriRed {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
-    padding: 15px;
+#tablaZonas th,
+#tablaAgentes th{
+padding:8px;
+font-size:11px;
 }
 
-.infoGrande_distriRed, .infoPeque_distriRed {
-    background-color: #E43636;
-    color: white;
-    padding: 10px;
-    border-radius: 10px;
-    min-width: 80px;
-    text-align: center;
+/* CELDAS */
+
+#tablaZonas td,
+#tablaAgentes td{
+padding:6px;
+text-align:center;
+border-bottom:1px solid #eee;
+max-width:80px;
+word-break:break-word;
 }
 
-.infoGrande_distriRed h3, .infoPeque_distriRed h3 { font-size: 0.7rem; color: #F6EFD2; }
-.infoGrande_distriRed h1, .infoPeque_distriRed h1 { font-size: 1.5rem; }
+/* ZEBRA */
 
-/* Sección de Círculos/Gráficos */
-.porc_distriRed {
-    display: flex;
-    background-color: #F6EFD2;
-    margin-top: auto;
-    height: 120px;
-    border-top: 2px solid #E2DDB4;
+.grupoA{
+background:white;
 }
 
-.primer_porc_distriRed, .segund_porc_distriRed {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.grupoB{
+background:#F6EFD2;
 }
 
-.circ1 {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    background-color: #E43636;
-    border: 5px solid #E2DDB4;
+/* HOVER */
+
+#tablaZonas tbody tr:hover,
+#tablaAgentes tbody tr:hover{
+background:#ffdede;
+transition:0.2s;
 }
 
-/* Sección Inferior */
-.fichayMarketShare {
-    display: flex;
-    gap: 20px;
-    align-items: flex-start;
+/* ================= COLORES CUMPLIMIENTO ================= */
+
+.cumplimiento_bajo{
+background:#ff4d4d;
+color:white;
+font-weight:bold;
 }
 
-.fichaDistritoZona {
-    background-color: #E43636;
-    width: 300px;
-    border-radius: 15px;
-    overflow: hidden;
-    color: white;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+.cumplimiento_medio{
+background:#ffd633;
+font-weight:bold;
 }
 
-.titulo__fichaDistritoZona {
-    padding: 15px;
-    font-weight: bold;
-    text-align: center;
+.cumplimiento_alto{
+background:#28a745;
+color:white;
+font-weight:bold;
 }
 
-.datosFicha {
-    display: flex;
-    border-bottom: 1px solid #eee;
+/* ================= SCROLL TABLA ================= */
+
+.tablaDistritos::-webkit-scrollbar{
+height:8px;
 }
 
-/* Efecto cebra para la tabla */
-.datosFicha:nth-child(even) .nombre_datosFicha { background-color: #F6EFD2; color: black; }
-.datosFicha:nth-child(odd) .nombre_datosFicha { background-color: #fff; color: black; }
-
-.nombre_datosFicha {
-    width: 70%;
-    padding: 8px 15px;
-    font-size: 13px;
-}
-
-.numero_datosFicha {
-    background-color: #E2DDB4;
-    width: 30%;
-    padding: 8px;
-    color: black;
-    text-align: center;
-    font-weight: bold;
-}
-
-.tabla_marketShare {
-    flex-grow: 1;
-    background-color: #E2DDB4;
-    border-radius: 15px;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.titulo_tabla_marketShare {
-    font-weight: bold;
-    margin-bottom: 15px;
-}
-
-.marketShare {
-    width: 100%;
-    background-color: #F6EFD2;
-    height: 100px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 10px;
-}
-
-/* ... (Todo tu CSS anterior se mantiene igual hasta los selectores específicos) ... */
-
-/* --- NUEVAS ANIMACIONES DE ENTRADA --- */
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Aplicamos la animación a los contenedores principales */
-.filtro_primer_pagina, .distriRed, .fichaDistritoZona, .tabla_marketShare {
-    animation: fadeInUp 0.6s ease-out forwards;
-}
-
-/* --- HOVERS PARA INTERACTIVIDAD --- */
-
-/* 1. Título principal: un pequeño brillo al pasar el mouse */
-.titulo_primer_pagina {
-    transition: all 0.3s ease;
-    cursor: default;
-}
-.titulo_primer_pagina:hover {
-    filter: brightness(1.1);
-    padding-left: 20px; /* Se desplaza sutilmente a la derecha */
-}
-
-/* 2. Selectores: cambian a un rojo más intenso */
-.select_filtro {
-    transition: background-color 0.3s ease, transform 0.2s ease;
-}
-.select_filtro:hover {
-    background-color: #c32b2b; /* Rojo un poco más oscuro */
-    transform: scale(1.02);
-}
-
-/* 3. Tarjetas de Información (infoGrande y infoPeque): Efecto de elevación */
-.infoGrande_distriRed, .infoPeque_distriRed {
-    transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
-    cursor: pointer;
-}
-.infoGrande_distriRed:hover, .infoPeque_distriRed:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 5px 15px rgba(228, 54, 54, 0.3);
-    background-color: #f24545; /* Rojo más vivo */
-}
-
-/* 4. Círculos de porcentaje: Efecto de pulso sutil */
-.circ1 {
-    transition: all 0.4s ease;
-}
-.circ1:hover {
-    transform: scale(1.1);
-    border-color: #F6EFD2;
-    box-shadow: 0 0 15px rgba(228, 54, 54, 0.5);
-}
-
-/* 5. Filas de la Ficha: Resaltado al pasar el mouse */
-.datosFicha {
-    transition: background-color 0.2s ease;
-    cursor: pointer;
-}
-.datosFicha:hover .nombre_datosFicha {
-    background-color: #000 !important; /* Fondo negro al hover */
-    color: #E2DDB4 !important;        /* Texto crema */
-}
-.datosFicha:hover .numero_datosFicha {
-    background-color: #f24545 !important;
-    color: white !important;
-}
-
-/* 6. Tabla Market Share: se aclara al pasar el mouse */
-.marketShare {
-    transition: all 0.3s ease;
-}
-.marketShare:hover {
-    background-color: #fff;
-    box-shadow: inset 0 0 10px rgba(0,0,0,0.05);
-    transform: scale(1.01);
-}
-
-/* 7. Logo: Un giro suave o escala */
-.titulo_sayayin {
-    transition: transform 0.5s ease;
-}
-.titulo_logo:hover .titulo_sayayin {
-    transform: rotate(5deg) scale(1.1);
-}
-
-/* --- AJUSTE DE RESPONSIVE (Opcional pero recomendado) --- */
-@media (max-width: 1000px) {
-    .filtroDistribu, .fichayMarketShare {
-        flex-direction: column;
-        align-items: center;
-    }
-    .filtro_primer_pagina, .distriRed, .fichaDistritoZona, .tabla_marketShare {
-        width: 100%;
-        margin-left: 0;
-        margin-right: 0;
-    }
-    .titulo_primer_pagina {
-        width: 60%;
-    }
-}
-
-/*CAMBIO PARA EL PAG
-DE FILTRO DISTRITO*/
-
-/* --- ORGANIZACIÓN DE LAYOUT --- */
-
-.main_container {
-    display: flex;
-    gap: 20px;
-    width: 100%;
-}
-
-.sidebar_filtros {
-    width: 300px; /* Ancho fijo para el filtro */
-}
-
-.dashboard_content {
-    flex-grow: 1; /* El resto del espacio para la ficha y tendencia */
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-/* Ajuste para que la ficha use mejor el espacio */
-.full-width {
-    width: 100% !important;
-}
-
-.grid_ficha {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Hace que los datos se pongan en columnas si hay espacio */
-    background-color: white;
-}
-
-/* --- TUS ESTILOS PREVIOS MODIFICADOS --- */
-
-.fichaDistritoZona {
-    background-color: #E43636;
-    border-radius: 15px;
-    overflow: hidden;
-    color: white;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    animation: fadeInUp 0.6s ease-out forwards;
-}
-
-.tabla_marketShare {
-    background-color: #E2DDB4;
-    border-radius: 15px;
-    padding: 20px;
-    animation: fadeInUp 0.6s ease-out forwards;
-}
-
-.marketShare {
-    width: 100%;
-    background-color: #F6EFD2;
-    height: 200px; /* Un poco más de altura para la tendencia */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 10px;
+.tablaDistritos::-webkit-scrollbar-thumb{
+background:#E43636;
+border-radius:10px;
 }
